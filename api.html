@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>API 설계</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="index.html">팀 소개</a></li>
+                <li><a href="members.html">팀원 소개</a></li>
+                <li><a href="api.html">API</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>API 설계</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>기능</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Request</th>
+                        <th>Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>메모 목록 전체 조회</td>
+                        <td>GET</td>
+                        <td>/memos</td>
+                        <td>없음</td>
+                        <td>없음</td>
+                    </tr>
+                    <tr>
+                        <td>메모 작성</td>
+                        <td>POST</td>
+                        <td>/add_memo</td>
+                        <td>{"title": "회의","date": "2024-06-05"}</td>
+                        <td>없음 (추가된 후, 메인 페이지로 리다이렉트)</td>
+                    </tr>
+                    <tr>
+                        <td>메모 수정</td>
+                        <td>POST</td>
+                        <td>/add_memo</td>
+                        <td>{"id": 2,"title": "수정된 회의","date": "2024-06-05"}</td>
+                        <td>없음 (수정된 후, 메인 페이지로 리다이렉트)</td>
+                    </tr>
+                    <tr>
+                        <td>메모 삭제</td>
+                        <td>POST</td>
+                        <td>/delete_memo</td>
+                        <td>{"id": 2}</td>
+                        <td>없음 (204 No Content 상태 코드 반환)</td>
+                    </tr>
+                    <tr>
+                        <td>게시글 읽기</td>
+                        <td>GET</td>
+                        <td>/board/&lt;int:post_id&gt;</td>
+                        <td>없음</td>
+                        <td>게시글 목록</td>
+                    </tr>
+                    <tr>
+                        <td>게시글 쓰기</td>
+                        <td>POST</td>
+                        <td>/board/create/</td>
+                        <td>{"title": "title", "author": "author", "date": "date", "time": "time", "content": "content"}</td>
+                        <td>작성 데이터</td>
+                    </tr>
+                    <tr>
+                        <td>게시글 수정</td>
+                        <td>PUT</td>
+                        <td>/board/&lt;int:post_id&gt;/edit</td>
+                        <td>{"id": "id", "title": "title", "content": "content"}</td>
+                        <td>작성 데이터</td>
+                    </tr>
+                    <tr>
+                        <td>게시글 삭제</td>
+                        <td>POST</td>
+                        <td>/board/&lt;int:post_id&gt;/delete/</td>
+                        <td>{"id": "id"}</td>
+                        <td>없음</td>
+                    </tr>
+                    <tr>
+                        <td>사용자 등록</td>
+                        <td>POST</td>
+                        <td>/api/register</td>
+                        <td>{"email": "user@example.com",<br>"username": "user",<br>"password": "password",<br>"fullname": "User Name"}</td>
+                        <td>{"message": "User created successfully"}</td>
+                    </tr>
+                    <tr>
+                        <td>로그인</td>
+                        <td>POST</td>
+                        <td>/api/login</td>
+                        <td>{"username": "user",<br>"password": "password"}</td>
+                        <td>{"message": "Login successful"}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
